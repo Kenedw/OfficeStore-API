@@ -1,7 +1,10 @@
 import { Router } from 'express';
+import UserController from './app/controllers/UserController';
 
 const routes = new Router();
 
-routes.get('/', (_, res) => res.send('<h1>OfficeStore API</h1>'));
+const apiVersion = '/api/v1/';
+
+routes.post(`${apiVersion}user`, UserController.store);
 
 export default routes;
