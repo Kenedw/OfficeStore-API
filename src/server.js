@@ -1,4 +1,8 @@
+import { config } from 'dotenv';
+
 import App from './app';
+
+config();
 
 const server = App.listen(3333, () => {
   let { address } = server.address();
