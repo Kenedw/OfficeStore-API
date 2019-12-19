@@ -20,5 +20,7 @@ module.exports = {
     'no-param-reassing': 'off',
     camelcase: 'off',
     'no-param-reassign': ['error', { props: false }],
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
 };
