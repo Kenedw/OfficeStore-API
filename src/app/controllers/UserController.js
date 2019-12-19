@@ -8,7 +8,9 @@ class UserController {
       email: Yup.string()
         .email()
         .required(),
-      cnpj: Yup.string().required(),
+      cnpj: Yup.string()
+        .length(14)
+        .required(),
       password: Yup.string().required(),
     });
 
@@ -27,7 +29,7 @@ class UserController {
     const schema = Yup.object().shape({
       name: Yup.string(),
       email: Yup.string().email(),
-      cnpj: Yup.string(),
+      cnpj: Yup.string().length(14),
       oldPassword: Yup.string(),
       password: Yup.string().when('oldPassword', (oldPassword, field) =>
         oldPassword ? field.required() : field
@@ -41,7 +43,7 @@ class UserController {
       return res.status(400).json({ error: 'Validation fails' });
     }
 
-    const { id: userId, oldPassword, password, confirmPassword } = req.body;
+    const { userId, oldPassword, password, confirmPassword } = req.body;
 
     const user = await User.findByPk(userId);
 
@@ -65,7 +67,7 @@ class UserController {
   }
 
   async delete(req, res) {
-    const { id: userId } = req.params;
+    const { userId } = req.params;
 
     const user = await User.findByPk(userId);
 
