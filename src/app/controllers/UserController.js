@@ -43,9 +43,9 @@ class UserController {
       return res.status(400).json({ error: 'Validation fails' });
     }
 
-    const { userId, oldPassword, password, confirmPassword } = req.body;
+    const { oldPassword, password, confirmPassword } = req.body;
 
-    const user = await User.findByPk(userId);
+    const user = await User.findByPk(req.userId);
 
     if (!user) {
       return res.status(404).json({ error: 'user not found' });
@@ -67,9 +67,7 @@ class UserController {
   }
 
   async delete(req, res) {
-    const { userId } = req.params;
-
-    const user = await User.findByPk(userId);
+    const user = await User.findByPk(req.userId);
 
     const deleted = new Date();
 
