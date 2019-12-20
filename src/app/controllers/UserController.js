@@ -10,11 +10,9 @@ class UserController {
       return res.status(404).json({ error: 'Validation fails' });
     }
 
-    let user = await User.findByPk(user_id);
-
-    user = user.toJSON();
-    // remove sensible data
-    delete user.password_hash;
+    const user = await User.findByPk(user_id, {
+      attributes: ['id', 'name', 'email', 'cnpj'],
+    });
 
     return res.json(user);
   }
@@ -85,13 +83,15 @@ class UserController {
   async delete(req, res) {
     const user = await User.findByPk(req.userId);
 
-    const deleted = new Date();
+    if (!user) {
+      return res.status(404).json('User not found');
+    }
 
-    const { id, name, cnpj, email, deleted_at } = await user.update({
-      deleted_at: deleted,
-    });
+    const { name } = user;
 
-    return res.json({ id, name, cnpj, email, deleted_at });
+    await user.destroy();
+
+    return res.json({ success: `User ${name} has been deleted` });
   }
 }
 
