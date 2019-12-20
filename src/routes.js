@@ -4,6 +4,7 @@ import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 
 import authMiddleware from './app/middleware/auth';
+import ItemController from './app/controllers/ItemController';
 
 const routes = new Router();
 
@@ -19,5 +20,10 @@ routes.use(authMiddleware);
 routes.post(`${apiVersion}user`, UserController.store);
 routes.put(`${apiVersion}user`, UserController.update);
 routes.delete(`${apiVersion}user`, UserController.delete);
+
+routes.get(`${apiVersion}item`, ItemController.index);
+routes.post(`${apiVersion}item`, ItemController.store);
+routes.put(`${apiVersion}item/:itemid`, ItemController.update);
+routes.delete(`${apiVersion}item/:itemid`, ItemController.delete);
 
 export default routes;

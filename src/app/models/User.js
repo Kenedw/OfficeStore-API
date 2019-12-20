@@ -10,7 +10,6 @@ class User extends Model {
         cnpj: Sequelize.STRING,
         password: Sequelize.VIRTUAL,
         password_hash: Sequelize.STRING,
-        deleted_at: Sequelize.DATE,
       },
       {
         sequelize,

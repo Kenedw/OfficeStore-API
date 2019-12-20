@@ -37,7 +37,7 @@ class SessionController {
       return res.status(406).json({ error: 'Password does not math' });
     }
 
-    const { id, name } = user;
+    const { id, name, updatedAt, createdAt } = user;
 
     return res.json({
       user: {
@@ -45,6 +45,8 @@ class SessionController {
         name,
         email,
         cnpj,
+        createdAt,
+        updatedAt,
       },
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expriresIn,
