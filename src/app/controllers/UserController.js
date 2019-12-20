@@ -3,6 +3,22 @@ import * as Yup from 'yup';
 import User from '../models/User';
 
 class UserController {
+  async index(req, res) {
+    const { id: user_id } = req.params;
+
+    if (!user_id) {
+      return res.status(404).json({ error: 'Validation fails' });
+    }
+
+    let user = await User.findByPk(user_id);
+
+    user = user.toJSON();
+    // remove sensible data
+    delete user.password_hash;
+
+    return res.json(user);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       email: Yup.string()

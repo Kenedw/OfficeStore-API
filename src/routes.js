@@ -12,6 +12,8 @@ const apiVersion = '/api/v1/';
 routes.get(`${apiVersion}`, (_, res) => res.json('Keep Alive'));
 routes.post(`${apiVersion}sessions`, SessionController.store);
 
+routes.get(`${apiVersion}user/:id`, UserController.index);
+
 routes.use(authMiddleware);
 
 routes.post(`${apiVersion}user`, UserController.store);
