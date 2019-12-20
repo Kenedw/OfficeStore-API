@@ -10,7 +10,7 @@ const routes = new Router();
 const apiVersion = '/api/v1/';
 
 routes.get(`${apiVersion}`, (_, res) => res.json('Keep Alive'));
-routes.post(`${apiVersion}sessions`, SessionController.store);
+routes.post(`${apiVersion}auth/sign_in`, SessionController.store);
 
 routes.get(`${apiVersion}user/:id`, UserController.index);
 
