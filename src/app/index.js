@@ -2,6 +2,8 @@ import express from 'express';
 import compression from 'compression';
 import Youch from 'youch';
 import timeout from 'connect-timeout';
+import cors from 'cors';
+import 'express-async-error';
 
 import routes from '../routes';
 
@@ -13,14 +15,15 @@ class App {
 
     this.middlewares();
     this.routes();
-    this.exceptionHandler();
     this.haltOnTimedout();
+    this.exceptionHandler();
   }
 
   middlewares() {
     this.server.use(express.json());
     this.server.use(compression());
-    this.server.use(timeout(60000));
+    this.server.use(timeout(20000));
+    this.server.use(cors());
   }
 
   routes() {
