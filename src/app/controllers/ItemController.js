@@ -1,14 +1,28 @@
 import * as Yup from 'yup';
+import { Op } from 'sequelize';
 import Item from '../models/Item';
 
 class ItemController {
   async index(req, res) {
-    const { page = 1, per_page = 10 } = req.query;
+    const { page = 1, per_page = 10, search = {} } = req.query;
 
     const { userId } = req;
 
+    const where = { user_id: userId };
+    switch (typeof search) {
+      case 'string': {
+        where.name = { [Op.iLike]: `%${search}%` };
+        break;
+      }
+      case 'number': {
+        where.id = search;
+        break;
+      }
+      default:
+    }
+
     const items = await Item.findAll({
-      where: { user_id: userId },
+      where,
       limit: per_page,
       offset: (page - 1) * per_page,
     });
