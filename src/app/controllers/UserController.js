@@ -32,9 +32,7 @@ class UserController {
       return res.status(400).json({ error: 'Validation fails' });
     }
 
-    const { id, name, cnpj, email } = await User.create(req.body).catch(e => {
-      res.status(401).json({ error: e.errors[0].message || e.message });
-    });
+    const { id, name, cnpj, email } = await User.create(req.body);
 
     return res.json({ id, name, cnpj, email });
   }
