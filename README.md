@@ -19,7 +19,7 @@ Em toda requisição autenticada 👮, deve conter o token de autenticação cap
 ### `GET` Status do servidor `http://baseURL/api/v1/`
 - Sem parâmetros
 - Sem corpo
-
+&nbsp;
 ### `POST` Autenticação `http://baseURL/api/v1/auth/signin`
  - Sem Parâmetro
  - Corpo:
@@ -30,10 +30,12 @@ Em toda requisição autenticada 👮, deve conter o token de autenticação cap
 	"password": <string> <obrigatório>,
  }
  ```
-
+&nbsp;
 ### `GET` Buscar usuario pelo ID `http://baseURL/api/v1/user/:id`
 - Sem parâmetros
 - Sem corpo
+
+&nbsp;
 
 ### `POST` Cria novo usuario `http://baseURL/api/v1/user`
 - Sem parâmetros
@@ -46,7 +48,7 @@ Em toda requisição autenticada 👮, deve conter o token de autenticação cap
 	"password":<string> <obrigatório>,
 }
 ```
-
+&nbsp;
 ### `PUT` `👮` Atualiza usuario `http://baseURL/api/v1/user`
 - Sem parâmetros
 - Corpo:
@@ -60,12 +62,12 @@ Em toda requisição autenticada 👮, deve conter o token de autenticação cap
 	"oldPassword":<string> <obrigatório se possuir password>,
 }
 ```
-
+&nbsp;
 ### `DELETE`  `👮` Deleta usuario `http://baseURL/api/v1/user`
 - Sem parâmetros
 - Sem corpo
 
-
+&nbsp;
 ### `GET`  `👮` Busca item `http://baseURL/api/v1/item`
 - Parâmetros:
 
@@ -77,6 +79,7 @@ Em toda requisição autenticada 👮, deve conter o token de autenticação cap
 
 - Sem corpo
 
+&nbsp;
 ### `POST`  `👮` Cria novo item `http://baseURL/api/v1/item`
 - Sem parâmetros
 - Corpo:
@@ -86,7 +89,7 @@ Em toda requisição autenticada 👮, deve conter o token de autenticação cap
   "value":<float> <obrigatório>
 }
 ```
-
+&nbsp;
 
 ### `PUT`  `👮` Atualiza item `http://baseURL/api/v1/item`
 - Sem parâmetros
@@ -98,11 +101,11 @@ Em toda requisição autenticada 👮, deve conter o token de autenticação cap
 }
 ```
 
-
+&nbsp;
 ### `DELETE`  `👮` Deleta item `http://baseURL/api/v1/item`
 - Sem parâmetros
 - Sem corpo
-
+&nbsp;
 # Inicializando a API
 
 Para executar a api, algum simples passo devem ser seguidos. 
