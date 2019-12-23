@@ -25,6 +25,7 @@ class ItemController {
       where,
       limit: per_page,
       offset: (page - 1) * per_page,
+      order: [['id', 'DESC']],
     });
 
     if (!items) {
