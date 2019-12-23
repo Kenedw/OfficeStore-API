@@ -108,7 +108,7 @@ Em toda requisição autenticada 👮, deve conter o token de autenticação cap
 &nbsp;
 # Inicializando a API
 
-Para executar a api, algum simples passo devem ser seguidos. 
+Para executar a api, alguns simples passos devem ser seguidos. 
 
 ## Instalando pacotes
 Após baixar uma copia deste repositório, com o terminal em tua pasta raiz, deve-se instalar todos os seus pacotes com o seu gerenciador preferido.
